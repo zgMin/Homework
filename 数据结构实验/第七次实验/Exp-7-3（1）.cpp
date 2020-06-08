@@ -6,7 +6,7 @@ int fa[100],ra[100];//fa等价类标号，ra秩
 int father(int x){		//查找等价类标号 
 	if(x==fa[x]) return x;
 	if(x!=fa[x]){
-		fa[x]=father(fa[x]);
+		fa[x]=father(fa[x]);		//路径压缩 
 	}
 	return fa[x];
 }
@@ -14,7 +14,7 @@ int father(int x){		//查找等价类标号
 void Union(int x,int y){
 	int r1=father(x);
 	int r2=father(y);
-	if(ra[r1]<ra[r2]){
+	if(ra[r1]<ra[r2]){			//按秩优化 
 		fa[r2]=r1;
 	}
 	else{
