@@ -160,7 +160,7 @@ LinkBook GetBook(LinkBook L,char *n,HashList H){
 	else return NULL;
 }
 
-//普通检索，返回图书地址 
+//普通检索
 Status Search(){ 
     fflush(stdin);
     while(true){
