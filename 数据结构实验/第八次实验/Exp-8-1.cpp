@@ -22,6 +22,7 @@ void qsort(char *L,int left,int right,bool (*cmp)(char a,char b)){//快排
 	//调整基准值位置 
 	L[left]=L[i];
 	L[i]=base;
+	return; 
 	qsort(L,left,i-1,cmp);//递归左边
 	qsort(L,i+1,right,cmp);//递归右边 
 	return;
