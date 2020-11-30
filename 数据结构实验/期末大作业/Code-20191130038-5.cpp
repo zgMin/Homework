@@ -3,6 +3,7 @@
 #include<cstdio>
 #include<cmath>
 #include<cstring>
+using namespace std;
 #define Status int
 #define k 96		//k进制,ascii可显字符共95个，保留0，取96进制 
 #define Max_Num	39877	//哈希表长度 
@@ -31,7 +32,6 @@ Status getHash(char ss[][1501],int m,HashList &H,int &val){
 		} 
 		else{	//不同字符串产生的冲突，进行线性探测再散列 
 			val=(val+d)%Max_Num;
-			d++;
 		} 
 	}
 	H[val].flag=m;		//指向的字符串标号 
@@ -47,32 +47,60 @@ int main(){
 	int t;
 	cout<<"请输入测试数据的组数："; 
 	cin>>t;
-	freopen("Input.txt","r",stdin); //输入重定向，输入数据将从Input.txt文件中读取 
-	freopen("hash-deduplication.txt","w",stdout); //输出重定向，输出数据将保存hash-deduplication.txt文件中 
+	FILE *pos;
+	FILE *rd = fopen("Input.txt", "r");
+	FILE *wt = fopen("hash-deduplication.txt", "w"); 
 	int cnt=0; //计数器，用于记录当前数据组数 
 	HashList H;		//创建哈希表 
 	while(true){
 		init(H);//初始化哈希表 
 		int n; 
-		cin>>n;
+		if(fscanf(rd,"%d",&n)==EOF){
+			cout<<"输入文件已经全部读取完！"<<endl; 
+			cout<<"是否继续测试？（y/n）";
+			char jixu;
+			cin>>jixu;
+			if(jixu=='y'||jixu=='Y'){
+				cnt=0;
+				cout<<"请输入测试数据的组数："; 
+				cin>>t;
+				continue;
+			} 
+			break; 
+		}
 		int ans[n/2];//ans用于存储重复的单词的下标，最多n/2个
 		int ans_cnt=0; //记录重复个数 
 		char ss[n+1][1501];//用于读入n个最大长度不超过 1500的字符串 
 		for(int i=1;i<=n;i++){
-			cin>>ss[i];
+			fscanf(rd,"%s",ss[i]);
 			int p;
 			if(getHash(ss,i,H,p)==0){
 				ans[ans_cnt++]=i;
 			}
 		}
 		//输出重复单词
+		cout<<"第"<<cnt+1<<"组重复单词"<<endl; 
 		for(int i=0;i<ans_cnt;i++)
 			cout<<ss[ans[i]]<<endl; 
 		cout<<endl;		//用于分割不同组测试数据 
+		for(int i=0;i<ans_cnt;i++)
+			fprintf(wt,"%s\n",ss[ans[i]]); 
+		fprintf(wt,"\n");
 		cnt++;
-		if(cnt==t) break;
+		if(cnt==t){
+			cout<<"是否继续测试？（y/n）";
+			char jixu;
+			cin>>jixu;
+			if(jixu=='y'||jixu=='Y'){
+				cnt=0;
+				cout<<"请输入测试数据的组数："; 
+				cin>>t;
+				continue;
+			} 
+			else break; 
+		} 
 	}
-	fclose(stdin);//关闭重定向输入
-	fclose(stdout);//关闭重定向输出 
+	fclose(rd);
+	fclose(wt); 
 	return 0;
 }
