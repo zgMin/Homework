@@ -1,0 +1,8 @@
+  #include<stdio.h>
+ void main()
+  {
+    char a;
+    int b;
+    scanf("%c%d",&a,&b);
+    printf("%c %d\n",a,b);
+  }

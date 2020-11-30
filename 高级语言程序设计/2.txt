@@ -1,0 +1,32 @@
+#include<stdio.h>
+int main(){
+    printf("%d\n",3+4*6);
+    printf("%d\n",3*4/6+6);
+    printf("%d\n",2*3/12*8/4);
+    printf("%d\n",10*(1+7*3));
+    printf("%d\n",20-2/6+3);
+    printf("%d\n",20-2/(6+3));
+    printf("%d\n",(20-2)/6+3);
+    printf("%d\n",(20-2)/(6+3));
+    //1-8 end
+    printf("%8.2f\n",3.0+4.0*6.0);
+    printf("%8.2f\n",3.0*4.0/6.0+6.0);
+    printf("%8.2f\n",2.0*3.0/12.0*8.0/4.0);
+    printf("%8.2f\n",10.0*(1.0+7.0*3.0));
+    printf("%8.2f\n",20.0-2.0/6.0+3.0);
+    printf("%8.2f\n",20.0-2.0/(6.0+3.0));
+    printf("%8.2f\n",(20.0-2.0)/6.0+3.0);
+    printf("%8.2f\n",(20.0-2.0)/(6.0+3.0));
+    //9-16 end
+    printf("%c\n",'m'-5);
+    printf("%c\n",'m'+5);
+    printf("%c\n",'G'+6);
+    printf("%c\n",'G'-6);
+    //17-20 end
+    printf("%d\n",'b'-'a');
+    printf("%d\n",'g'-'a'+1);
+    printf("%d\n",'G'-'A'+1);
+    //21-23 end
+
+    return 0;
+ }

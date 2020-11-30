@@ -1,0 +1,18 @@
+#include<stdio.h>
+void main(){
+  printf("请输入要进行的转化（0.F转C   1.C转F）\n");
+  int ctr;
+  scanf("%d",&ctr);
+  if(ctr){
+    printf("请输入摄氏温度\n");
+    float c;
+    scanf("%f",&c);
+    printf("华氏温度为%.1f\n",9.0/5.0*c+32);
+  }
+  else{
+    printf("请输入华氏温度\n");
+    float f;
+    scanf("%f",&f);
+    printf("摄氏温度为%.1f\n",(5.0/9.0)*(f-32));
+  }
+ }
