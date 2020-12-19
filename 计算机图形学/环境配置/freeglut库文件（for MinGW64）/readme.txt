@@ -1,0 +1,1 @@
+把MinGW和share复制到Codeblocks的根目录下，然后再启动codeblocks并建立GLUT项目。
